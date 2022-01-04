@@ -4,7 +4,6 @@ import random
 # local imports
 from words import word_list
 
-tries = 0
 # Define some Functions
 
 # 1- a function to randomly get a word -- seed you app with data
@@ -16,16 +15,24 @@ def get_word():
 
 
 def play_game(game_word):
-    word_completion = "_" * len(game_word)
+
+    # 1- define your vars
+    word_completion = "_ " * len(game_word)
     guessed = False
     guessed_letters = []
     guessed_words = []
-    # tries = 6  # number of hangman body parts before a loss
+    tries = 6  # number of hangman body parts before a loss
+
+    # 2- print start game instructions
+    print("Let's Play Hangman!")
+    print(game_word)  # debug - the word at hand
+    print(display_hangman(tries))  # the hangman
+    print(word_completion)  # the word
 
 
 def display_hangman(tries):
-    stages = [  # 6: final state: head, torso, both arms, and both legs
-                """
+    game_states = [  # 6: final state: head, torso, both arms, and both legs
+        """
                    --------
                    |      |
                    |      O
@@ -34,8 +41,8 @@ def display_hangman(tries):
                    |     / \\
                    -
                 """,
-                # 5: head, torso, both arms, and one leg
-                """
+        # 5: head, torso, both arms, and one leg
+        """
                    --------
                    |      |
                    |      O
@@ -44,8 +51,8 @@ def display_hangman(tries):
                    |     / 
                    -
                 """,
-                # 4: head, torso, and both arms
-                """
+        # 4: head, torso, and both arms
+        """
                    --------
                    |      |
                    |      O
@@ -54,8 +61,8 @@ def display_hangman(tries):
                    |      
                    -
                 """,
-                # 3: head, torso, and one arm
-                """
+        # 3: head, torso, and one arm
+        """
                    --------
                    |      |
                    |      O
@@ -64,8 +71,8 @@ def display_hangman(tries):
                    |     
                    -
                 """,
-                # 2: head and torso
-                """
+        # 2: head and torso
+        """
                    --------
                    |      |
                    |      O
@@ -74,8 +81,8 @@ def display_hangman(tries):
                    |     
                    -
                 """,
-                # 1: head
-                """
+        # 1: head
+        """
                    --------
                    |      |
                    |      O
@@ -84,8 +91,8 @@ def display_hangman(tries):
                    |     
                    -
                 """,
-                # 0: initial empty state
-                """
+        # 0: initial empty state
+        """
                    --------
                    |      |
                    |      
@@ -95,11 +102,12 @@ def display_hangman(tries):
                    -
                 """
     ]
-    return stages[tries]
+    return game_states[tries]
 
 
 # Invoke
-print(get_word())
-print(display_hangman(tries))
+word = get_word()
+# print(display_hangman(tries))
+play_game(word)
 
 # if not main fxn disclaimer

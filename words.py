@@ -15,3 +15,5 @@ word_list = [
 ]
 
 # print(len(word_list))
+# for index, word in enumerate(word_list, 1):
+#     print(f'the {index}-ith word in the word list is "{word}"')
